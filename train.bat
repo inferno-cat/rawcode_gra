@@ -1,0 +1,1 @@
+python main.py --train_batch_size 8 --epochs 40 --lr 1e-4 --dataset d:\data\BSDS500_flipped_rotated --optimizer_method AdamW --amp --num_workers 4
