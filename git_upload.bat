@@ -1,5 +1,5 @@
 @echo off
-:: 切换到脚本所在目录（确保路径正确）
+:: 切换到脚本所在目录
 cd /d %~dp0
 
 :: 检查是否在 Git 仓库中
@@ -18,8 +18,8 @@ git status
 :menu
 echo.
 echo 请选择操作：
-echo 1. 添加所有更改并提交
-echo 2. 仅提交已暂存的更改
+echo 1. 添加所有更改并提交（允许空提交）
+echo 2. 仅提交已暂存的更改（允许空提交）
 echo 3. 退出
 set /p choice="输入选项 (1/2/3): "
 
@@ -43,8 +43,8 @@ if "%commit_msg%"=="" (
     goto commit
 )
 
-:: 执行提交
-git commit -m "%commit_msg%"
+:: 执行提交（允许空提交）
+git commit --allow-empty -m "%commit_msg%"
 if errorlevel 1 (
     echo 提交失败，请检查错误。
     pause
